@@ -1,16 +1,15 @@
-# 📊 Real-Time Analytics Dashboard
+# 📊 Real-Time Analytics Dashboard (Full-Stack TypeScript)
 
 <div align="center">
 
-**An enterprise-grade, full-stack real-time analytics platform with Role-Based Access Control (RBAC) built using NestJS, Socket.io, Next.js & Supabase**
+**A production-grade, Role-Based Access Control (RBAC), real-time analytics dashboard built with Next.js, NestJS, Socket.io & Prisma**
 
-⚡ Continuous Live Data Simulator • 📈 Real-Time Charts • 👑 Admin vs Viewer RBAC • 🔒 JWT Auth • 🐳 Docker Containerized • 🗄️ Supabase PostgreSQL
+📈 Live Data Streaming • 🔐 JWT + RBAC • 🎯 Dynamic Filtering • 📤 CSV/PDF Export • 👥 Admin User Management 🐳 Docker Containerized • 🗄️ Supabase PostgreSQL
 
+[![Tech](https://img.shields.io/badge/Frontend-Next.js_16-000000?style=for-the-badge&logo=next.js)](#-tech-stack)
+[![Tech](https://img.shields.io/badge/Backend-NestJS-E0234E?style=for-the-badge&logo=nestjs)](#-tech-stack)
+[![Tech](https://img.shields.io/badge/Database-Supabase_Postgres-3ECF8E?style=for-the-badge&logo=supabase)](#-tech-stack)
 [![GitHub](https://img.shields.io/badge/GitHub-Repository-181717?style=for-the-badge&logo=github)](https://github.com/razazaheer12/Real-Time-Analytics-Dashboard)
-[![NestJS](https://img.shields.io/badge/NestJS-E0234E?style=for-the-badge&logo=nestjs&logoColor=white)](https://nestjs.com/)
-[![Next.js](https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=next.js&logoColor=white)](https://nextjs.org/)
-[![Socket.io](https://img.shields.io/badge/Socket.io-010101?style=for-the-badge&logo=socketdotio&logoColor=white)](https://socket.io/)
-[![Supabase](https://img.shields.io/badge/Supabase-3FCF8E?style=for-the-badge&logo=supabase&logoColor=white)](https://supabase.com/)
 
 </div>
 
@@ -18,20 +17,9 @@
 
 ## 🌟 Overview
 
-**Real-Time Analytics Dashboard** is a high-performance telemetry and data visualization platform engineered to broadcast, stream, and visualize live system metrics and user analytics in real-time. The application features an automated background simulation engine (`DataSimulatorService`) that pushes live analytics updates every 4 seconds over persistent WebSockets, providing an instant visual overview of active metrics, conversion rates, and server stats without manual page refreshes.
+**Real-Time Analytics Dashboard** is a full-stack, enterprise-style business intelligence tool that simulates a live production analytics environment. It streams metrics in real time via WebSockets, enforces strict **role-based access control** (Admin / Analyst / Viewer), and gives administrators full control over user management — all wrapped in a clean, responsive, chart-driven UI.
 
-Built as a clean monorepo architecture, it combines a robust **NestJS** microservice-style backend, **Socket.io** event engine, **Supabase PostgreSQL** data storage, fine-grained **Role-Based Access Control (Admin & Viewer roles)**, and a modern **Next.js / React** frontend styled with **Tailwind CSS**.
-
----
-
-## 🔐 User Roles & Authorization (RBAC)
-
-The platform implements granular multi-role authentication to ensure secure data access and system management:
-
-| Role | Access Level | Permissions & Capabilities |
-|---|---|---|
-| 👑 **Admin** | Read & Write / Full Control | • Full access to live telemetry graphs and historical database logs<br>• Can trigger, start, pause, or reconfigure the `DataSimulatorService`<br>• Manage platform settings, user permissions, and API key management |
-| 👁️ **Viewer** | Read-Only | • Subscribes to live WebSocket telemetry updates (`analyticsUpdate`)<br>• Access to personal interactive dashboard widgets & trend charts<br>• Restricted from accessing simulator control endpoints or admin configurations |
+Built end-to-end with a modern **TypeScript stack**: **Next.js (App Router)** on the frontend, **NestJS + Prisma + Socket.io** on the backend, and **Supabase (PostgreSQL)** as the cloud-hosted database.
 
 ---
 
@@ -39,208 +27,233 @@ The platform implements granular multi-role authentication to ensure secure data
 
 | Feature | Description |
 |---|---|
-| ⚡ **Live Data Engine** | Automated `DataSimulatorService` pushing real-time metrics & telemetry every 4 seconds via WebSockets |
-| 👥 **Role-Based Security** | Explicit **Admin** (System controls & settings) and **Viewer** (Read-only analytics) access layers |
-| 📈 **Interactive Visualizations** | Dynamic analytics charts, trend cards, and live widgets powered by Recharts & Tailwind CSS |
-| 🔄 **Low-Latency Streaming** | Bidirectional real-time state synchronization using Socket.io client & server layers |
-| 🔐 **Authentication & Security** | JWT-based auth guard with password hashing, RBAC guards, protected routes, and session persistence |
-| 🗄️ **Database Integration** | Persistent historical metrics storage powered by Supabase PostgreSQL DB |
-| 🐳 **Docker Containerized** | Multi-stage Docker build setup (`Dockerfile` & `.dockerignore`) for continuous cloud deployment |
-| 📁 **Clean Monorepo Setup** | Unified repository housing both backend and frontend codebases with clear isolation |
-| 📱 **Responsive Dark UI** | Sleek, modern dashboard interface designed for mobile, tablet, and desktop viewports |
+| 🔐 **JWT Authentication** | Secure login with bcrypt password hashing, protected routes, and show/hide password toggle |
+| 🛡️ **Role-Based Access Control (RBAC)** | Three roles — `ADMIN`, `ANALYST`, `VIEWER` — with backend-enforced route guards and role-scoped data visibility |
+| 📈 **Live Data Visualization** | Interactive Line, Bar, and Pie charts (Recharts) for revenue trends, category breakdowns, and regional distribution |
+| ⚡ **Real-Time Updates** | Socket.io-powered live metric streaming — charts update automatically every few seconds without refreshing |
+| 🎯 **Dynamic Filtering** | Filter analytics by date range, category, and region, synced across charts and summary cards via Zustand |
+| 📤 **CSV / PDF Export** | Admin-only export of filtered analytics reports, generated server-side with `json2csv` and `pdfkit` |
+| 👥 **Admin User Management** | Full CRUD — Admins can create, edit, reset passwords for, and delete users directly from the dashboard |
+| ⚙️ **Self-Service Profile Settings** | Every user can update their own name/email and change their password securely |
+| 🔔 **Toast Notifications & Skeleton Loaders** | Polished UX with async feedback, loading states, and a global error boundary |
+| 📱 **Responsive Layout** | Adaptive sidebar/navbar layout that adjusts cleanly across desktop and mobile viewports |
 
 ---
 
 ## 🛠️ Tech Stack
 
 ### Frontend
-- ⚛️ **Next.js / React** — Reactive SSR & CSR client framework
-- 🎨 **Tailwind CSS** — Modern utility-first styling & dark mode UI
-- 📊 **Recharts / Chart.js** — Interactive data visualization & real-time metric graphs
-- 🔌 **Socket.io-client** — WebSocket client listener for instant metric streaming
-- 🧭 **Axios & Hooks** — Efficient API data fetching & state management
+- ⚛️ **Next.js 16** (App Router) — Modern React framework with file-based routing
+- 🔷 **TypeScript** — End-to-end type safety
+- 🎨 **Tailwind CSS** — Utility-first responsive styling
+- 📊 **Recharts** — Declarative, composable charting library
+- 🐻 **Zustand** — Lightweight global state management for filters
+- 🔌 **Socket.io-client** — Real-time WebSocket communication
+- 🌐 **Axios** — HTTP client with JWT interceptors
 
 ### Backend
-- 🦁 **NestJS** — Progressive Node.js framework for scalable server-side code
-- 🔌 **Socket.io** — Low-latency WebSocket gateway for real-time data broadcasting
-- 🗄️ **Supabase (PostgreSQL)** — Managed cloud database & relational data persistence
-- 🔑 **JWT & Passport + Roles Guard** — Stateless token authentication with Admin/Viewer RBAC enforcement
-- ⚙️ **TypeScript** — End-to-end static typing across models and gateways
+- 🐦 **NestJS** — Modular, scalable Node.js framework
+- 🔌 **Socket.io** — WebSocket gateway with JWT-authenticated, role-based rooms
+- 🗄️ **Prisma ORM** — Type-safe database access layer
+- 🔑 **JWT + Passport** — Stateless authentication for both REST and WebSocket connections
+- 🔒 **bcrypt** — Secure password hashing
+- 📄 **json2csv / pdfkit** — Server-side report generation
 
-### Deployment & DevOps
-| Layer | Infrastructure / Platform |
-|---|---|
-| **Architecture** | Monorepo (`frontend/` + `backend/`) |
-| **Containerization** | Docker (`Dockerfile` & `.dockerignore` included) |
-| **Database** | Supabase PostgreSQL Cloud |
-| **Local Environment** | Node.js (v18+) & Localhost setup |
+### Database
+- 🐘 **Supabase (PostgreSQL)** — Cloud-hosted relational database with pooled + direct connections
 
 ---
 
-## ⚡ System Architecture Representation Diagram (ARD)
+## ⚡ System Architecture
 
-```text
-                       ┌─────────────────────────────────────────┐
-                       │           React / Next.js UI            │
-                       │   (Admin / Viewer Dashboards & Auth)    │
-                       └───────────────────┬─────────────────────┘
-                                           │
-                           HTTP REST APIs  │  Socket.io WebSockets
-                           (JWT Auth/RBAC) │  (Live 4s Pushes)
-                                           ▼
-                       ┌─────────────────────────────────────────┐
-                       │             NestJS Backend              │
-                       │ ┌─────────────────────────────────────┐ │
-                       │ │        Roles Guard (RBAC)           │ │
-                       │ │  [Admin Control / Viewer Read-Only] │ │
-                       │ └──────────────────┬──────────────────┘ │
-                       │ ┌──────────────────┴──────────────────┐ │
-                       │ │        DataSimulatorService         │ │
-                       │ │   (Generates Telemetry Every 4s)    │ │
-                       │ └─────────────────────────────────────┘ │
-                       └───────────────────┬─────────────────────┘
-                                           │
-                                  PostgreSQL Connection
-                                           ▼
-                       ┌─────────────────────────────────────────┐
-                       │          Supabase Cloud Database        │
-                       └─────────────────────────────────────────┘
 ```
-                       
----
+┌───────────────────┐         ┌───────────────────────┐         ┌──────────────────┐
+│    Next.js App     │◄───────►│   NestJS API Server    │◄───────►│    Supabase       │
+│  (App Router)       │  HTTP    │   (REST + Socket.io)    │  Prisma  │   (PostgreSQL)     │
+│  - Dashboard UI      │  JWT     │   - Auth / RBAC          │  ORM     │  - users           │
+│  - Recharts          │◄───────►│   - Filtered Metrics API │◄───────►│  - metrics         │
+│  - Zustand Filters    │ Socket.io│   - Export (CSV/PDF)     │          │  - categories       │
+│  - Settings/Admin UI   │  (WS)    │   - Live Data Simulator  │          │  - regions           │
+└───────────────────┘         └───────────────────────┘         └──────────────────┘
+                                          ▲
+                                          │
+                                ┌──────────────────┐
+                                │  Interval-based    │
+                                │  Live Metric         │
+                                │  Simulator (4s)       │
+                                └──────────────────┘
+```
 
-## Workflow
+### Workflow
 
-Users authenticate via NestJS JWT endpoint and receive a token containing their designated role (Admin or Viewer). Upon login, the Next.js dashboard establishes a WebSocket connection with the Socket.io Gateway. The backend DataSimulatorService automatically computes real-time analytics (CPU, active users, transactions, response times) every 4 seconds. Telemetry updates are broadcasted to all authenticated clients while administrative actions (e.g. simulator controls) are restricted exclusively to Admin role tokens. Telemetry data is persisted in Supabase PostgreSQL for historical analysis.
+Users authenticate through the Next.js frontend against JWT-secured NestJS REST endpoints. Once authenticated, the Socket.io client establishes a WebSocket connection (also JWT-verified) and joins a role-specific room. A backend interval service continuously generates simulated metrics, persists them via Prisma to Supabase, and emits them live to connected clients — updating charts in real time without polling.
 
 ---
 
 ## 📂 Project Structure
 
 ```
-Real-Time-Analytics-Dashboard/
-│
+realtime-analytics-dashboard/
 ├── backend/
 │   ├── src/
-│   │   ├── auth/            # JWT authentication, RBAC roles guards & strategies
-│   │   ├── analytics/       # Data simulator, telemetry logic & services
-│   │   ├── events/          # Socket.io gateways & WebSocket event handlers
-│   │   ├── database/        # Supabase PostgreSQL client & schemas
-│   │   └── main.ts          # NestJS application bootstrap
-│   ├── Dockerfile           # Backend containerization setup
-│   ├── .dockerignore        # Docker build exclusion rules
+│   │   ├── auth/             # JWT strategy, guards, decorators, login/register
+│   │   ├── users/             # Profile management & admin user CRUD
+│   │   ├── metrics/           # Filtered analytics REST API
+│   │   ├── realtime/          # Socket.io gateway + live data simulator
+│   │   ├── export/            # CSV/PDF report generation
+│   │   ├── prisma/            # Prisma service/module
+│   │   └── common/            # Global exception filter
+│   ├── prisma/
+│   │   ├── schema.prisma
+│   │   └── seed.ts
 │   └── package.json
 │
 └── frontend/
     ├── src/
-    │   ├── app/             # Next.js App Router pages (Login, Admin, Viewer Dashboard)
-    │   ├── components/      # Dynamic charts, metric widgets & layout UI
-    │   ├── hooks/           # Custom useSocket & useAnalytics hooks
-    │   └── lib/             # Socket.io client & API helpers
+    │   ├── app/
+    │   │   ├── (auth)/login/          # Login page
+    │   │   └── (dashboard)/           # Dashboard, Settings, Admin Users
+    │   ├── components/
+    │   │   ├── charts/                 # Line, Bar, Pie chart components
+    │   │   ├── filters/                 # Date/Category/Region filters
+    │   │   ├── export/                   # Export buttons
+    │   │   └── layout/                    # Sidebar, Navbar
+    │   ├── context/                        # AuthContext, ToastContext
+    │   ├── hooks/                            # useSocket, useMetrics, useUsers
+    │   ├── store/                              # Zustand filter store
+    │   └── lib/                                  # Axios instance, Socket client
     └── package.json
 ```
 
 ---
 
-## 🚀 Getting Started
+## 🚀 Getting Started Locally
 
 ### Prerequisites
+- Node.js 18+
+- A Supabase account (free tier)
 
-- **Node.js:** v18+
-- **npm** or **yarn**
-- **Supabase account** (Free tier)
-
-### 1️⃣ Clone the Repository
-
+### 1️⃣ Clone the repository
 ```bash
-git clone https://github.com/razazaheer12/Real-Time-Analytics-Dashboard.git
-cd Real-Time-Analytics-Dashboard
+git clone <your-repo-url>
+cd realtime-analytics-dashboard
 ```
 
 ### 2️⃣ Backend Setup
-
 ```bash
 cd backend
 npm install
 ```
 
-Create a `.env` file in the `backend/` directory:
-
-```
-PORT=5000
-NODE_ENV=development
-JWT_SECRET=your_super_secret_jwt_key
-SUPABASE_URL=your_supabase_project_url
-SUPABASE_KEY=your_supabase_anon_key
-CLIENT_URL=http://localhost:3000
+Create a `.env` file in `backend/`:
+```env
+DATABASE_URL="postgresql://postgres.<ref>:<password>@<pooler-host>:6543/postgres?pgbouncer=true"
+DIRECT_URL="postgresql://postgres.<ref>:<password>@<pooler-host>:5432/postgres"
+JWT_SECRET="your_jwt_secret"
+JWT_EXPIRES_IN="1d"
 ```
 
-Start the backend development server:
+Run migrations and seed the database:
+```bash
+npx prisma migrate dev --name init
+npx prisma db seed
+```
 
+Start the backend:
 ```bash
 npm run start:dev
 ```
 
-The backend will start running on **http://localhost:5000** with WebSocket support enabled.
+Backend runs at `http://localhost:3001` 🚀
 
 ### 3️⃣ Frontend Setup
-
-In a new terminal window, navigate to the `frontend/` directory:
-
 ```bash
 cd frontend
 npm install
 ```
 
-Create a `.env.local` file in the `frontend/` directory:
-
-```
-NEXT_PUBLIC_API_URL=http://localhost:5000
-NEXT_PUBLIC_SOCKET_URL=http://localhost:5000
+Create a `.env.local` file in `frontend/`:
+```env
+NEXT_PUBLIC_API_URL=http://localhost:3001
 ```
 
-Start the frontend development server:
-
+Start the frontend:
 ```bash
 npm run dev
 ```
 
-The dashboard will be available at **http://localhost:3000** 🎉
+The app will be live at `http://localhost:3000` 🎉
+
+### 4️⃣ Test Accounts (from seed script)
+| Role | Email | Password |
+|---|---|---|
+| Admin | `admin@test.com` | `test123` |
+| Viewer | `viewer@test.com` | `test123` |
 
 ---
 
-## 🔌 WebSocket & Event API Reference
+## 🔌 REST API Endpoints
 
-| Event Name | Direction | Allowed Role | Description |
+| Endpoint | Method | Access | Description |
 |---|---|---|---|
-| `connection` | Client → Server | Admin / Viewer | Client establishes WebSocket connection |
-| `subscribeToAnalytics` | Client → Server | Admin / Viewer | Subscribes client to real-time telemetry stream |
-| `analyticsUpdate` | Server → Client | Admin / Viewer | Emits updated metrics data every 4 seconds |
-| `triggerSimulatorAction` | Client → Server | 👑 Admin Only | Modifies or triggers the DataSimulatorService |
-| `getHistoricalMetrics` | Client → Server | Admin / Viewer | Requests historical data range from Supabase |
-| `metricsHistory` | Server → Client | Admin / Viewer | Returns historical analytics payload |
-| `disconnect` | Client → Server | Admin / Viewer | Client closes persistent WebSocket channel |
+| `/auth/register` | POST | Public | Register a new account |
+| `/auth/login` | POST | Public | Login and receive JWT |
+| `/metrics` | GET | Authenticated | Filtered metrics list (role-scoped) |
+| `/metrics/summary` | GET | Authenticated | Aggregated revenue summary |
+| `/metrics/categories` | GET | Authenticated | List of categories |
+| `/metrics/regions` | GET | **Admin only** | List of regions |
+| `/export/csv` | GET | **Admin only** | Download filtered report as CSV |
+| `/export/pdf` | GET | **Admin only** | Download filtered report as PDF |
+| `/users/me` | GET / PATCH | Authenticated | View/update own profile |
+| `/users/me/password` | PATCH | Authenticated | Change own password |
+| `/users` | GET / POST | **Admin only** | List / create users |
+| `/users/:id` | PATCH / DELETE | **Admin only** | Update / delete a user |
+
+## 🔌 Socket.io Events
+
+| Event | Direction | Description |
+|---|---|---|
+| `connect` | Client ↔ Server | JWT-authenticated handshake, joins role-based room |
+| `metric:new` | Server → Client | Emits a newly generated live metric every ~4 seconds |
 
 ---
 
-## 📸 Dashboard Preview
+## 🛡️ Role-Based Access Control
 
-> 💡 Sleek dark-themed analytics dashboard interface showcasing live telemetry graphs and dynamic metric cards.
+| Capability | Admin | Analyst | Viewer |
+|---|---|---|---|
+| View dashboard & charts | ✅ | ✅ | ✅ (last 7 days only) |
+| Region filter & breakdown | ✅ | ❌ | ❌ |
+| Export CSV/PDF | ✅ | ❌ | ❌ |
+| Manage users (CRUD) | ✅ | ❌ | ❌ |
+| Edit own profile/password | ✅ | ✅ | ✅ |
 
-```
-+-----------------------------------------------------------------------+
-|  📊 Real-Time Analytics Dashboard           [Role: Admin] 🟢 Live     |
-+-----------------------------------------------------------------------+
-|  [ ⚡ CPU Usage: 42% ]  [ 👥 Active Users: 1,284 ]  [ 🚀 RPS: 340 ]   |
-+-----------------------------------------------------------------------+
-|  📈 LIVE TELEMETRY STREAM (Updated every 4s)                          |
-|                                                                       |
-|      /\      /\                                                       |
-|     /  \    /  \    /\                                                |
-|    /    \__/    \__/  \                                               |
-|                                                                       |
-+-----------------------------------------------------------------------+
-```
+---
+
+## 📸 Preview
+
+> 💡 Add your own screenshots here before publishing — e.g. Login page, Dashboard (Admin view), Dashboard (Viewer view), Manage Users page.
+
+### Login Page
+`[Add screenshot here]`
+
+### Dashboard — Admin View
+`[Add screenshot here]`
+
+### Dashboard — Viewer View (Restricted)
+`[Add screenshot here]`
+
+### Admin — Manage Users
+`[Add screenshot here]`
+
+---
+
+## 🗺️ Roadmap / Future Improvements
+
+- [ ] Deploy backend to a persistent Node.js host (Socket.io requires long-running processes, not serverless)
+- [ ] httpOnly cookie-based auth for stronger XSS protection
+- [ ] Pagination for large metric datasets
+- [ ] Unit & E2E test coverage
 
 ---
 
@@ -255,9 +268,14 @@ The dashboard will be available at **http://localhost:3000** 🎉
 
 ## 📄 License
 
-This project is open-source and available under the **MIT License**.
+This project is open-source and available for learning and personal use.
 
 ---
 
-⭐ If you found this repository helpful, consider giving it a star!  
-Made with 💜, NestJS & Next.js
+<div align="center">
+
+### ⭐ If you found this project helpful, consider giving it a star!
+
+Built step-by-step, one day at a time — full-stack, real-time, and role-aware.
+
+</div>
