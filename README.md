@@ -66,23 +66,23 @@ Built end-to-end with a modern **TypeScript stack**: **Next.js (App Router)** on
 
 ## ⚡ System Architecture
 
-```
-┌───────────────────┐         ┌───────────────────────┐         ┌──────────────────┐
-│    Next.js App     │◄───────►│   NestJS API Server    │◄───────►│    Supabase       │
-│  (App Router)       │  HTTP    │   (REST + Socket.io)    │  Prisma  │   (PostgreSQL)     │
-│  - Dashboard UI      │  JWT     │   - Auth / RBAC          │  ORM     │  - users           │
-│  - Recharts          │◄───────►│   - Filtered Metrics API │◄───────►│  - metrics         │
-│  - Zustand Filters    │ Socket.io│   - Export (CSV/PDF)     │          │  - categories       │
-│  - Settings/Admin UI   │  (WS)    │   - Live Data Simulator  │          │  - regions           │
-└───────────────────┘         └───────────────────────┘         └──────────────────┘
-                                          ▲
-                                          │
-                                ┌──────────────────┐
-                                │  Interval-based    │
-                                │  Live Metric         │
-                                │  Simulator (4s)       │
-                                └──────────────────┘
-```
+```mermaid
+flowchart LR
+    A["Next.js Frontend"]
+    B["NestJS API Server"]
+    C[("Supabase PostgreSQL")]
+    D["Metric Simulator"]
+
+    A <-->|"HTTP + JWT"| B
+    A <-.->|"Socket.io"| B
+    B <-->|"Prisma ORM"| C
+    D -->|"every 4s"| B
+
+    style A fill:#E6F1FB,stroke:#185FA5,color:#042C53
+    style B fill:#EEEDFE,stroke:#534AB7,color:#26215C
+    style C fill:#E1F5EE,stroke:#0F6E56,color:#04342C
+    style D fill:#F1EFE8,stroke:#5F5E5A,color:#2C2C2A
+```                         
 
 ### Workflow
 
