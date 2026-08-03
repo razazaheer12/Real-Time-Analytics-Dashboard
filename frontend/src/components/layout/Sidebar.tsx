@@ -17,15 +17,21 @@ export default function Sidebar() {
         <a href="/dashboard" className="block px-3 py-2 rounded bg-gray-800 hover:bg-gray-700">
           Dashboard
         </a>
+        <a href="/settings" className="block px-3 py-2 rounded hover:bg-gray-800">
+          Settings
+        </a>
 
         <RequireRole allowedRoles={['ADMIN']}>
           <div className="pt-2 mt-2 border-t border-gray-800">
-          <p className="text-xs text-gray-500 px-3 mb-1">Admin</p>
-          <p className="text-xs text-gray-400 px-3">
-        Export options available on the Dashboard page
-        </p>
-       </div>
-       </RequireRole>
+            <p className="text-xs text-gray-500 px-3 mb-1">Admin</p>
+            <a href="/admin/users" className="block px-3 py-2 rounded hover:bg-gray-800">
+              Manage Users
+            </a>
+            <p className="text-xs text-gray-400 px-3 mt-1">
+              Export options available on the Dashboard page
+            </p>
+          </div>
+        </RequireRole>
       </nav>
 
       <div className="border-t border-gray-700 pt-4">
