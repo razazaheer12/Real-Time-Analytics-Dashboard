@@ -235,16 +235,26 @@ The app will be live at `http://localhost:3000` 🎉
 > 💡 Add your own screenshots here before publishing — e.g. Login page, Dashboard (Admin view), Dashboard (Viewer view), Manage Users page.
 
 ### Login Page
-`[Add screenshot here]`
+
+<img width="950" height="413" alt="image" src="https://github.com/user-attachments/assets/9a2535c3-1a75-4e98-bf99-7c3ec89e3987" />
+
 
 ### Dashboard — Admin View
-`[Add screenshot here]`
+
+<img width="953" height="413" alt="image" src="https://github.com/user-attachments/assets/27b90ee2-7411-4750-b63b-0c150d486f8e" />
+
+<img width="953" height="413" alt="image" src="https://github.com/user-attachments/assets/c18308da-57e9-4d44-989a-9259277deb9d" />
 
 ### Dashboard — Viewer View (Restricted)
-`[Add screenshot here]`
+
+<img width="953" height="415" alt="image" src="https://github.com/user-attachments/assets/d781766b-fcbd-42fd-86bb-bdc16f31dfdf" />
 
 ### Admin — Manage Users
-`[Add screenshot here]`
+
+<img width="952" height="416" alt="image" src="https://github.com/user-attachments/assets/d6ba56be-ba4b-4d2e-9b2c-4b0d184643f2" />
+
+<img width="953" height="415" alt="image" src="https://github.com/user-attachments/assets/016afc93-9b75-4e0e-8e02-a40c3d170577" />
+
 
 ---
 
